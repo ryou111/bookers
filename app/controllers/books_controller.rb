@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
-  
-  
+
+
   def index
   end
 
@@ -9,4 +9,5 @@ class BooksController < ApplicationController
 
   def edit
   end
+
 end
