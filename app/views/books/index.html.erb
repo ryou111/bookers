@@ -1,18 +1,36 @@
-<% @books.each do |book| %>
-  <tr>
-    <td><%= book.title %></td><!--書籍のタイトルを表示するためのセル（列）を定義-->
-    <td><%= book.body %></td><!--書籍の内容を表示するセルを定義-->
-    <td>
-        <%= link_to 'Show', "/books/#{book.id}" %><!--book.idを使用してリンク先のURLを動的に生成-->
-    </td>
-    <td>
-        <%= link_to 'Edit', edit_book_path(book.id) %><!--書籍の編集ページにリンクする-->
-    </td>
-    <td>
+<p id="notice"></p>
+
+<h1>Books</h1>
+<table>
+  <thead>
+    <tr>
+      <th class="header">Title</th>
+      <th class="header2">Body</th>
+      <th class="header3"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @books.each do |book| %>
+    <tr>
+      <td><%= book.title %></td><!--書籍のタイトルを表示するためのセル（列）を定義-->
+      <td><%= book.body %></td><!--書籍の内容を表示するセルを定義-->
+      <td>
+        <%= link_to "Show",book_path(book.id) %><!--book.idを使用してリンク先のURLを動的に生成-->
+      </td>
+      <td>
+        <%= link_to "Edit",edit_book_path(book.id) %><!--書籍の編集ページにリンクする-->
+      </td>
+      <td>
         <%= link_to 'Destroy', book_path(book.id), method: :delete, "data-confirm" => "Are you Sure?" %><!--HTTPのDELETEメソッドを使用して削除処理を行うように指定, "data-confirm" => "Are you Sure?"は削除操作を行う前に確認のポップアップを表示するための設定-->
-    </td>
-  </tr>
-<% end %>
+      </td>
+    </tr>
+    <% end %>
+
+
+  </tbody>
+  </table>
+
 
 <h2>New book</h2>
 <% if @book.errors.any? %>
