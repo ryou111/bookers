@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :books, :except => :edit
-  get '/' => 'homes#top'
+  root to: "homes#top"
   get 'books/:id/edit' => 'books#edit', as: 'edit_book'
   patch 'books/:book' => 'books#update', as: 'update_book'
   delete 'books/:id' => 'books#destroy', as: 'destroy_book'
